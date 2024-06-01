@@ -6,6 +6,7 @@ import '../../../../shared/animations_widget/animated_popup.dart';
 import '../../../../shared/animations_widget/animated_widget_shower.dart';
 import '../../../../shared/k_list_tile.dart/k_list_tile.dart';
 import '../../../../utils/extensions/extensions.dart';
+import '../../../auth/api/auth.api.dart';
 
 class SignoutTile extends StatelessWidget {
   const SignoutTile({super.key});
@@ -49,7 +50,7 @@ class SignoutPopup extends StatelessWidget {
             'Are you sure you want to signout? You will be redirected to the login page'),
         actions: [
           TextButton(
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: context.pop,
             child: Text(
               'Cancel',
               style:
@@ -57,7 +58,7 @@ class SignoutPopup extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () async => await signoutApi(context),
             child: const Text('Confirm', style: TextStyle(color: Colors.red)),
           ),
         ],

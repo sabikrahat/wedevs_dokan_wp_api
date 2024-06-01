@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:isar/isar.dart';
+import '../modules/auth/model/user.dart';
 
 import '../config/constants.dart';
 import '../config/get.platform.dart';
@@ -15,8 +17,9 @@ import 'paths.dart' show AppDir, appDir, initDir;
 late final Isar db;
 late AppSettings appSettings;
 late CurrencyProfile appCurrency;
+User? appUser;
 
-const _schemas = [AppSettingsSchema, CurrencyProfileSchema];
+const _schemas = [AppSettingsSchema, CurrencyProfileSchema, UserSchema];
 
 Future<void> openDB() async {
   await initDir();
@@ -48,6 +51,8 @@ void openDBSync(AppDir dir) => db = Isar.open(
 Future<void> initAppDatum() async {
   if (await db.currencyProfiles.where().countAsync() == 0) await currencyInit();
   appSettings = await initAppSettings();
+  appUser = await db.users.getAsync(0);
+  log.f('AppUser: $appUser');
   appCurrency = (await db.currencyProfiles
       .where()
       .shortFormEqualTo(appSettings.currency)
@@ -79,11 +84,19 @@ Future<void> currencyInit() async {
   await currencies.saveAll();
 }
 
-void listenForAppConfig() =>
-    db.appSettings.watchObjectLazy(0).listen((_) async {
-      appSettings = await db.appSettings.getAsync(0) ?? AppSettings();
-      appCurrency = (await db.currencyProfiles
-          .where()
-          .shortFormEqualTo(appSettings.currency)
-          .findFirstAsync())!;
-    });
+void listenForAppConfig() {
+  db.users.watchObjectLazy(0).listen((_) async {
+    appUser = await db.users.getAsync(0);
+    log.f('User Updated: $appUser');
+  });
+  db.appSettings.watchObjectLazy(0).listen((_) async {
+    appSettings = await db.appSettings.getAsync(0) ?? AppSettings();
+    appCurrency = (await db.currencyProfiles
+        .where()
+        .shortFormEqualTo(appSettings.currency)
+        .findFirstAsync())!;
+  });
+}
+
+final userStreamPd = StreamProvider((_) => db.users.watchObject(0));
+final appSettingStreamPd = StreamProvider((_) => db.appSettings.watchObject(0));

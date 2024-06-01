@@ -21,7 +21,7 @@ const _unselectedColor = Colors.blueGrey;
 const _titleTextColor = Colors.white;
 const _primaryLightColor = kPrimaryColor;
 const _cardBackgroundColor = Color.fromARGB(255, 21, 24, 34);
-const _scaffoldBackgroundColor = Color.fromARGB(255, 14, 14, 14);
+const _scaffoldBackgroundColor = Color(0xFF080808);
 const _floatingActionButtonColor = kPrimaryColor;
 final _shadowColor = kPrimaryColor.withOpacity(0.3);
 
@@ -64,21 +64,30 @@ final _switchTheme = SwitchThemeData(
 );
 
 final _darkInputDecorationTheme = InputDecorationTheme(
-  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+  contentPadding: const EdgeInsets.all(20),
   enabledBorder: OutlineInputBorder(
     borderRadius: borderRadius12,
     gapPadding: 10,
-    borderSide: const BorderSide(color: _bodyTextColor, width: 1.0),
+    // borderSide: const BorderSide(color: _bodyTextColor, width: 1.0),
+    borderSide: BorderSide.none,
+  ),
+  border: OutlineInputBorder(
+    borderRadius: borderRadius12,
+    gapPadding: 10,
+    // borderSide: const BorderSide(color: _bodyTextColor, width: 1.0),
+    borderSide: BorderSide.none,
   ),
   disabledBorder: OutlineInputBorder(
     borderRadius: borderRadius12,
     gapPadding: 10,
-    borderSide: BorderSide(color: _bodyTextColor.withOpacity(0.4), width: 1.0),
+    // borderSide: BorderSide(color: _bodyTextColor.withOpacity(0.4), width: 1.0),
+    borderSide: BorderSide.none,
   ),
   focusedBorder: OutlineInputBorder(
     borderRadius: borderRadius12,
     gapPadding: 10,
-    borderSide: const BorderSide(color: darkPrimaryColor, width: 1.3),
+    // borderSide: const BorderSide(color: darkPrimaryColor, width: 1.3),
+    borderSide: BorderSide.none,
   ),
   floatingLabelStyle: const TextStyle(
     fontSize: 16,
@@ -88,16 +97,21 @@ final _darkInputDecorationTheme = InputDecorationTheme(
   errorBorder: OutlineInputBorder(
     borderRadius: borderRadius12,
     gapPadding: 10,
-    borderSide: const BorderSide(color: Colors.red, width: 1.3),
+    // borderSide: const BorderSide(color: Colors.red, width: 1.3),
+    borderSide: BorderSide.none,
   ),
   focusedErrorBorder: OutlineInputBorder(
     borderRadius: borderRadius12,
     gapPadding: 10,
-    borderSide: const BorderSide(color: Colors.red, width: 1.3),
+    // borderSide: const BorderSide(color: Colors.red, width: 1.3),
+    borderSide: BorderSide.none,
   ),
+  filled: true,
+  fillColor: _cardBackgroundColor,
   suffixIconColor: darkPrimaryColor,
   prefixIconColor: darkPrimaryColor,
   errorMaxLines: 3,
+  floatingLabelBehavior: FloatingLabelBehavior.never,
 );
 
 const _textSelectionTheme = TextSelectionThemeData(
@@ -178,21 +192,21 @@ const _progressIndicatorTheme = ProgressIndicatorThemeData(
 
 final _elevatedButtonTheme = ElevatedButtonThemeData(
   style: ElevatedButton.styleFrom(
-    visualDensity: VisualDensity.compact,
     backgroundColor: darkPrimaryColor,
-    textStyle: _textTheme.titleSmall,
+    textStyle: _textTheme.titleLarge!.copyWith(fontWeight: FontWeight.normal),
     foregroundColor: Colors.white,
-    shape: roundedRectangleBorder25,
+    padding: const EdgeInsets.all(17),
+    shape: roundedRectangleBorder12,
   ),
 );
 
 final _outlinedButtonTheme = OutlinedButtonThemeData(
   style: OutlinedButton.styleFrom(
     side: const BorderSide(color: darkPrimaryColor, width: 1.5),
-    visualDensity: VisualDensity.compact,
     foregroundColor: darkPrimaryColor,
-    textStyle: _textTheme.titleSmall,
-    shape: roundedRectangleBorder25,
+    textStyle: _textTheme.titleLarge!.copyWith(fontWeight: FontWeight.normal),
+    padding: const EdgeInsets.all(17),
+    shape: roundedRectangleBorder12,
   ),
 );
 

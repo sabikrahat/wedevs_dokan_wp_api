@@ -47,5 +47,10 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<!-- image_picker config -->
+		<key>NSCameraUsageDescription</key>
+		<string>Needs permission about photo library for uploading new picture picture.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Needs camera access permission for taking instant picture for uploading new profile picture.</string>
 	</dict>
 </plist>

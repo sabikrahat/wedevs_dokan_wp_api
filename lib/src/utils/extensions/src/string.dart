@@ -11,7 +11,8 @@ extension StringUtils on String {
 
   bool get isPortNumber => _portNumber.hasMatch(toLowerCase());
 
-  bool get isPassword => length >= 8;
+  // bool get isPassword => length >= 6 && contains(RegExp(r'[0-9]')) && contains(RegExp(r'[a-z]')) && contains(RegExp(r'[A-Z]')) && contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
+  bool get isPassword => length >= 6;
 
   bool get isUsername => !contains(' ') && length >= 6;
 
@@ -97,12 +98,17 @@ extension StringNullUtils on String? {
   double get toDouble => double.tryParse(this ?? '0.0') ?? 0.0;
 
   DateTime get toDateTime => DateTime.tryParse(this ?? '') ?? DateTime.now();
-  DateTime get toUtcDateTime => DateTime.tryParse(this ?? '')?.toUtc() ?? DateTime.now().toUtc();
-  DateTime get toLocalDateTime => DateTime.tryParse(this ?? '')?.toLocal() ?? DateTime.now().toLocal();
+  DateTime get toUtcDateTime =>
+      DateTime.tryParse(this ?? '')?.toUtc() ?? DateTime.now().toUtc();
+  DateTime get toLocalDateTime =>
+      DateTime.tryParse(this ?? '')?.toLocal() ?? DateTime.now().toLocal();
 
-  TimeOfDay get toTimeOfDay => TimeOfDay.fromDateTime(this?.toDateTime ?? DateTime.now());
-  TimeOfDay get toUtcTimeOfDay => TimeOfDay.fromDateTime(this?.toUtcDateTime ?? DateTime.now().toUtc());
-  TimeOfDay get toLocalTimeOfDay => TimeOfDay.fromDateTime(this?.toLocalDateTime ?? DateTime.now().toLocal());
+  TimeOfDay get toTimeOfDay =>
+      TimeOfDay.fromDateTime(this?.toDateTime ?? DateTime.now());
+  TimeOfDay get toUtcTimeOfDay =>
+      TimeOfDay.fromDateTime(this?.toUtcDateTime ?? DateTime.now().toUtc());
+  TimeOfDay get toLocalTimeOfDay =>
+      TimeOfDay.fromDateTime(this?.toLocalDateTime ?? DateTime.now().toLocal());
 }
 
 String pluralize(

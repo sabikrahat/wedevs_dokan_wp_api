@@ -17,3 +17,9 @@ const Color white = Colors.white;
 const Color black = Colors.black;
 
 const Color kPrimaryColor = Color(0xFFF1634C);
+
+const kGradient = LinearGradient(
+  colors: [Color(0xFFF2709C), Color(0xFFFF9472)],
+  begin: Alignment.centerRight,
+  end: Alignment.centerLeft,
+);

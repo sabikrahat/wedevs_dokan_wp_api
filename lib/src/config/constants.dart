@@ -42,6 +42,7 @@ final borderRadius25 = BorderRadius.circular(25);
 final borderRadius30 = BorderRadius.circular(30);
 final borderRadius45 = BorderRadius.circular(45);
 final borderRadius60 = BorderRadius.circular(60);
+final borderRadius100 = BorderRadius.circular(100);
 
 final roundedRectangleBorder3 =
     RoundedRectangleBorder(borderRadius: borderRadius3);
