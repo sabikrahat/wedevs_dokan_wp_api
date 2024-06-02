@@ -34,23 +34,24 @@ Future<void> signupApi(BuildContext context, AuthProvider notifier,
     http.StreamedResponse response = await request.send();
     final res = await response.stream.bytesToString();
     final body = json.decode(res);
-    log.i('signupApi response: $body');
 
     if (response.statusCode == 200) {
+      log.i('signupApi response: $body');
       if (!context.mounted) return;
       if (autoSignin) {
         await signinApi(context, notifier);
       } else {
         notifier.isSignup = false;
         notifier.clear();
-        showAwesomeSnackbar(
-            context, 'Success!', body['message'], MessageType.success);
+        showAwesomeSnackbar(context, 'Success!',
+            removeHtmlTags(body['message']), MessageType.success);
       }
       return;
     } else {
+      log.e('signupApi response: $body');
       if (!context.mounted) return;
       showAwesomeSnackbar(
-          context, 'Failed!', body['message'], MessageType.failure);
+          context, 'Failed!', removeHtmlTags(body['message']), MessageType.failure);
     }
     //
     EasyLoading.dismiss();
@@ -59,9 +60,10 @@ Future<void> signupApi(BuildContext context, AuthProvider notifier,
     EasyLoading.showError('No Internet Connection. $e');
     return;
   } on ClientException catch (e) {
-    log.e('User Creation: $e');
+    log.e('User Signup: $e');
     if (!context.mounted) return;
-    showAwesomeSnackbar(context, 'Failed!', e.message, MessageType.failure);
+    showAwesomeSnackbar(
+        context, 'Failed!', removeHtmlTags(e.message), MessageType.failure);
     return;
   }
 }
@@ -77,9 +79,9 @@ Future<void> signinApi(BuildContext context, AuthProvider notifier) async {
     http.StreamedResponse response = await request.send();
     final res = await response.stream.bytesToString();
     final body = json.decode(res);
-    log.i('signinApi response: $body');
 
     if (response.statusCode == 200) {
+      log.i('signinApi response: $body');
       await User.fromJson(body).save();
       if (!context.mounted) return;
       notifier.clear();
@@ -87,9 +89,10 @@ Future<void> signinApi(BuildContext context, AuthProvider notifier) async {
       await context.pushRemoveUntil(const AppRouter());
       return;
     } else {
+      log.e('signinApi response: $body');
       if (!context.mounted) return;
-      showAwesomeSnackbar(
-          context, 'Failed!', body['message'], MessageType.failure);
+      showAwesomeSnackbar(context, 'Failed!', removeHtmlTags(body['message']),
+          MessageType.failure);
     }
     return;
   } on SocketException catch (e) {
@@ -98,7 +101,8 @@ Future<void> signinApi(BuildContext context, AuthProvider notifier) async {
   } on ClientException catch (e) {
     log.e('User signin: $e');
     if (!context.mounted) return;
-    showAwesomeSnackbar(context, 'Failed!', e.message, MessageType.failure);
+    showAwesomeSnackbar(
+        context, 'Failed!', removeHtmlTags(e.message), MessageType.failure);
     return;
   }
 }
@@ -126,4 +130,9 @@ Future<void> signoutApi(BuildContext context) async {
     showAwesomeSnackbar(context, 'Failed!', e.message, MessageType.failure);
     return;
   }
+}
+
+String removeHtmlTags(String? htmlString) {
+  final regExp = RegExp(r'<[^>]*>', multiLine: true, caseSensitive: true);
+  return htmlString?.replaceAll(regExp, '') ?? 'An error occurred.';
 }
