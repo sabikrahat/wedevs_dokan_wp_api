@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../api/auth.api.dart';
 
 typedef AuthNotifier
@@ -13,7 +14,8 @@ class AuthProvider extends AutoDisposeFamilyNotifier<void, bool> {
   final TextEditingController emailCntrlr = TextEditingController();
   final TextEditingController nameCntrlr = TextEditingController();
   final TextEditingController pwdCntrlr = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> signinFormKey = GlobalKey<FormState>();
   bool pwdConfirmObscure = true;
   bool pwdObscure = true;
   dynamic image;
@@ -60,7 +62,8 @@ class AuthProvider extends AutoDisposeFamilyNotifier<void, bool> {
   }
 
   void clear() {
-    formKey = GlobalKey<FormState>();
+    // signupFormKey = GlobalKey<FormState>();
+    // signinFormKey = GlobalKey<FormState>();
     pwdConfirmCntrlr.clear();
     emailCntrlr.clear();
     nameCntrlr.clear();
@@ -73,12 +76,12 @@ class AuthProvider extends AutoDisposeFamilyNotifier<void, bool> {
       isSignup ? await signup(context) : await signin(context);
 
   Future<void> signup(BuildContext context) async {
-    if (!formKey.currentState!.validate()) return;
+    if (!signupFormKey.currentState!.validate()) return;
     await signupApi(context, this, true);
   }
 
   Future<void> signin(BuildContext context) async {
-    if (!formKey.currentState!.validate()) return;
+    if (!signinFormKey.currentState!.validate()) return;
     await signinApi(context, this);
   }
 }

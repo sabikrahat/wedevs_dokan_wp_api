@@ -17,7 +17,7 @@ class AuthForm extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
       child: Form(
-        key: notifier.formKey,
+        key: notifier.isSignup ? notifier.signupFormKey : notifier.signinFormKey,
         child: Column(
           children: [
             DownToUpTransition(

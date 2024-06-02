@@ -33,7 +33,7 @@ class AuthView extends ConsumerWidget {
                   AuthImageSelect(notifier),
                   AuthForm(notifier),
                   AuthButton(notifier),
-                  const SocialAuth(),
+                  SocialAuth(notifier),
                   AuthAlternativeText(notifier),
                 ],
               ),

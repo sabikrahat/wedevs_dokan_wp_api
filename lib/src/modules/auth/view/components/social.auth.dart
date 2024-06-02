@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../config/constants.dart';
+import '../../provider/auth.provider.dart';
 
 class SocialAuth extends StatelessWidget {
-  const SocialAuth({super.key});
+  const SocialAuth(this.notifier, {super.key});
+
+  final AuthProvider notifier;
 
   @override
   Widget build(BuildContext context) {
