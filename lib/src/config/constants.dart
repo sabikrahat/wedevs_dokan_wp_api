@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import '../utils/extensions/extensions.dart';
 
+import '../utils/extensions/extensions.dart';
 import '../utils/logger/logger_helper.dart';
 
 const appName = 'Dokan';

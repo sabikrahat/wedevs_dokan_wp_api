@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'components/filter.dart';
-import 'components/tile.dart';
-import '../../../utils/extensions/extensions.dart';
 
 import '../../../config/constants.dart';
+import '../../../utils/extensions/extensions.dart';
 import '../provider/product.provider.dart';
+import 'components/filter.dart';
+import 'components/search.delegate.dart';
+import 'components/tile.dart';
 
 class ProductView extends ConsumerWidget {
   const ProductView({super.key});
@@ -32,7 +33,8 @@ class ProductView extends ConsumerWidget {
                     centerTitle: true,
                     actions: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () async => await showSearch(
+                            context: context, delegate: SearchProducts()),
                         icon: Icon(
                           Icons.search,
                           size: 30.0,

@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+
 import '../../../config/url.dart';
 import '../../../db/isar.dart';
-import '../model/user.dart';
 import '../../../router.dart';
-import '../../../utils/extensions/extensions.dart';
-
 import '../../../shared/show_toast/awsome.snackbar/awesome.snackbar.dart';
 import '../../../shared/show_toast/awsome.snackbar/show.awesome.snackbar.dart';
+import '../../../utils/extensions/extensions.dart';
 import '../../../utils/logger/logger_helper.dart';
+import '../model/user.dart';
 import '../provider/auth.provider.dart';
 
 Future<void> signupApi(BuildContext context, AuthProvider notifier,

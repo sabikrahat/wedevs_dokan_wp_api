@@ -13,26 +13,18 @@ class KListTile extends StatelessWidget {
     this.trailing,
     this.subtitle,
     this.selected,
-    this.onEditTap,
-    this.onDeleteTap,
     this.onDoubleTap,
     this.onLongPress,
-    this.slidableAction,
-    this.canEdit = true,
     this.paddingBetweenTitleAndSubtitle,
   });
 
-  final bool canEdit;
   final Widget? title;
   final bool? selected;
   final Widget? leading;
   final Widget? subtitle;
   final Widget? trailing;
-  final Widget? slidableAction;
   final void Function()? onTap;
-  final void Function()? onEditTap;
   final EdgeInsetsGeometry? padding;
-  final void Function()? onDeleteTap;
   final void Function()? onDoubleTap;
   final void Function()? onLongPress;
   final double? paddingBetweenTitleAndSubtitle;
@@ -100,7 +92,7 @@ class _Tile extends StatelessWidget {
       ),
       child: Padding(
         padding: padding ??
-            const EdgeInsets.symmetric(horizontal: 12.0, vertical: 3.0),
+            const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5.0),
         child: Row(
           mainAxisAlignment: mainCenter,
           children: [
