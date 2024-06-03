@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:wedevs_dokan_wp_api/src/utils/extensions/extensions.dart';
+import '../utils/extensions/extensions.dart';
 
 import '../utils/logger/logger_helper.dart';
 

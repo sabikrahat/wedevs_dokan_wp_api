@@ -2,9 +2,9 @@ import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:wedevs_dokan_wp_api/src/utils/extensions/extensions.dart';
 
 import '../../../../config/constants.dart';
+import '../../../../utils/extensions/extensions.dart';
 import '../../model/product.dart';
 
 class ProductTile extends StatelessWidget {
@@ -30,6 +30,7 @@ class ProductTile extends StatelessWidget {
                 topRight: Radius.circular(12.0),
               ),
               child: FastCachedImage(
+                key: ValueKey(product.image),
                 url: product.image ?? '',
                 loadingBuilder: (_, p) => SizedBox(
                   child: Padding(
@@ -40,8 +41,27 @@ class ProductTile extends StatelessWidget {
                     ),
                   ),
                 ),
-                errorBuilder: (_, __, ___) =>
-                    const Center(child: Icon(Icons.error)),
+                errorBuilder: (_, __, ___) {
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: mainCenter,
+                      children: [
+                        Image.asset(
+                          'assets/icons/splash-icon-384x384.png',
+                          height: 45.0,
+                          width: 45.0,
+                        ),
+                        const SizedBox(height: 5.0),
+                        Text(
+                          'image not found',
+                          style: context.text.labelMedium!.copyWith(
+                            color: context.theme.disabledColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
                 fit: BoxFit.cover,
               ),
             ),
@@ -84,7 +104,7 @@ class ProductTile extends StatelessWidget {
                   ),
                   RatingBar.builder(
                     ignoreGestures: true,
-                    initialRating: 4,
+                    initialRating: product.ratingCount?.toDouble() ?? 0.0,
                     minRating: 1,
                     direction: Axis.horizontal,
                     itemSize: 17,

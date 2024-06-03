@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:wedevs_dokan_wp_api/src/modules/home/provider/home.provider.dart';
+import '../provider/home.provider.dart';
 
 import '../../../config/constants.dart';
 import '../../../config/custom.routes.dart';
 import '../../../utils/themes/themes.dart';
+import '../../product/view/product.dart';
 import '../../profile/profile.dart';
 import '../../settings/view/setting.view.dart';
-import 'components/body.dart';
 import 'components/bottom.nav.bar.dart';
 
 class HomeView extends ConsumerWidget {
@@ -23,7 +23,7 @@ class HomeView extends ConsumerWidget {
             return Scaffold(
               body: SafeArea(
                 child: notifier.currentIndex == 0
-                    ? const MainBody()
+                    ? const ProductView()
                     : notifier.currentIndex == 3
                         ? const ProfileView()
                         : const Center(

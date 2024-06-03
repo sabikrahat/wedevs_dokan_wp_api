@@ -1,8 +1,8 @@
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 
 import 'src/app.dart' show App;
 import 'src/config/get.platform.dart';

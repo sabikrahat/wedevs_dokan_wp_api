@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../config/constants.dart';
 
+import '../../../../config/constants.dart';
 import '../../../../shared/gradient_widget/gradient_widget.dart';
 import '../../../../shared/image.widget/image.widget.dart';
 import '../../../../shared/image_process/single/pick.photo.dart';

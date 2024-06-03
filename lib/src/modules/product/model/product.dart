@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:wedevs_dokan_wp_api/src/utils/extensions/extensions.dart';
+import '../../../utils/extensions/extensions.dart';
 
 part 'product.ext.dart';
 
@@ -11,6 +11,7 @@ class Product {
   double? regularPrice;
   String? image;
   int? ratingCount;
+  int? totalSales;
   DateTime? dateCreated;
 
   Product({
@@ -20,6 +21,7 @@ class Product {
     this.regularPrice,
     this.image,
     this.ratingCount,
+    this.totalSales,
     this.dateCreated,
   });
 
@@ -32,6 +34,7 @@ class Product {
       image:
           json[_Json.images] == null ? null : json[_Json.images][0][_Json.src],
       ratingCount: json[_Json.ratingCount]?.toString().toInt,
+      totalSales: json[_Json.totalSales]?.toString().toInt,
       dateCreated: json[_Json.dateCreated] == null
           ? null
           : DateTime.parse(json[_Json.dateCreated] as String).toLocal(),
@@ -42,7 +45,7 @@ class Product {
 
   @override
   String toString() =>
-      'Product(id: $id, name: $name, price: $price, regularPrice: $regularPrice, image: $image)';
+      'Product(id: $id, name: $name, price: $price, regularPrice: $regularPrice, image: $image, ratingCount: $ratingCount, totalSales: $totalSales, dateCreated: $dateCreated)';
 
   @override
   bool operator ==(Object other) {
@@ -64,5 +67,6 @@ class _Json {
   static const String src = 'src';
   static const String ratingCount = 'rating_count';
   static const String dateCreated = 'date_created';
+  static const String totalSales = 'total_sales';
 
 }

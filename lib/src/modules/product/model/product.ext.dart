@@ -8,6 +8,7 @@ extension ProductExt on Product {
     double? regularPrice,
     String? image,
     int? ratingCount,
+    int? totalSales,
     DateTime? dateCreated,
   }) {
     return Product(
@@ -17,6 +18,7 @@ extension ProductExt on Product {
       regularPrice: regularPrice ?? this.regularPrice,
       image: image ?? this.image,
       ratingCount: ratingCount ?? this.ratingCount,
+      totalSales: totalSales ?? this.totalSales,
       dateCreated: dateCreated ?? this.dateCreated,
     );
   }
@@ -33,6 +35,7 @@ extension ProductExt on Product {
         }
       ],
       _Json.ratingCount: ratingCount,
+      _Json.totalSales: totalSales,
       _Json.dateCreated: dateCreated?.toIso8601String(),
     };
   }

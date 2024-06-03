@@ -4,10 +4,10 @@ import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:isar/isar.dart';
-import '../modules/auth/model/user.dart';
 
 import '../config/constants.dart';
 import '../config/get.platform.dart';
+import '../modules/auth/model/user.dart';
 import '../modules/settings/model/currency/currency.model.dart';
 import '../modules/settings/model/settings.model.dart';
 import '../utils/extensions/extensions.dart';
