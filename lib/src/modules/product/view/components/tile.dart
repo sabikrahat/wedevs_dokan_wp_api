@@ -71,52 +71,54 @@ class ProductTile extends StatelessWidget {
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-              child: Column(
-                crossAxisAlignment: crossStart,
-                children: [
-                  Text(
-                    product.name ?? 'No Name',
-                    style: context.theme.textTheme.titleMedium,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Row(
-                    children: [
-                      if (product.regularPrice != null &&
-                          (product.price ?? 0.0) <
-                              (product.regularPrice ?? 0.0))
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5.0),
-                          child: Text(
-                            product.regularPrice?.formattedFloat ?? '--',
-                            style: context.text.titleMedium!.copyWith(
-                                color: context.theme.disabledColor,
-                                fontWeight: FontWeight.normal,
-                                decoration: TextDecoration.lineThrough),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: crossStart,
+                  children: [
+                    Text(
+                      product.name ?? 'No Name',
+                      style: context.theme.textTheme.titleMedium,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Row(
+                      children: [
+                        if (product.regularPrice != null &&
+                            (product.price ?? 0.0) <
+                                (product.regularPrice ?? 0.0))
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5.0),
+                            child: Text(
+                              product.regularPrice?.formattedFloat ?? '--',
+                              style: context.text.titleMedium!.copyWith(
+                                  color: context.theme.disabledColor,
+                                  fontWeight: FontWeight.normal,
+                                  decoration: TextDecoration.lineThrough),
+                            ),
                           ),
+                        Text(
+                          product.price?.formattedFloat ?? '--',
+                          style: context.theme.textTheme.titleMedium!
+                              .copyWith(color: context.theme.primaryColor),
                         ),
-                      Text(
-                        product.price?.formattedFloat ?? '--',
-                        style: context.theme.textTheme.titleMedium!
-                            .copyWith(color: context.theme.primaryColor),
-                      ),
-                    ],
-                  ),
-                  RatingBar.builder(
-                    ignoreGestures: true,
-                    initialRating: product.ratingCount?.toDouble() ?? 0.0,
-                    minRating: 1,
-                    direction: Axis.horizontal,
-                    itemSize: 17,
-                    allowHalfRating: true,
-                    itemCount: 5,
-                    itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
-                    itemBuilder: (_, __) =>
-                        const Icon(Icons.star, color: Colors.amber),
-                    onRatingUpdate: (rating) =>
-                        debugPrint('Rating updated: $rating'),
-                  ),
-                ],
+                      ],
+                    ),
+                    RatingBar.builder(
+                      ignoreGestures: true,
+                      initialRating: product.ratingCount?.toDouble() ?? 0.0,
+                      minRating: 1,
+                      direction: Axis.horizontal,
+                      itemSize: 17,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
+                      itemBuilder: (_, __) =>
+                          const Icon(Icons.star, color: Colors.amber),
+                      onRatingUpdate: (rating) =>
+                          debugPrint('Rating updated: $rating'),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
