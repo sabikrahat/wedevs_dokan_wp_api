@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../config/constants.dart';
-import '../../provider/home.provider.dart';
 import '../../../../utils/extensions/extensions.dart';
+import '../../provider/home.provider.dart';
 
 class KBottomNavBar extends StatelessWidget {
   const KBottomNavBar(this.notifier, {super.key});

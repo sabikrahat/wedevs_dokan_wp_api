@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../utils/extensions/extensions.dart';
 
 import '../../config/custom.routes.dart';
+import '../../utils/extensions/extensions.dart';
 import '../settings/view/setting.view.dart';
 
 class ProfileView extends StatelessWidget {
@@ -16,7 +16,7 @@ class ProfileView extends StatelessWidget {
           backgroundColor: context.theme.scaffoldBackgroundColor,
           surfaceTintColor: context.theme.scaffoldBackgroundColor,
           shadowColor: Colors.transparent,
-          title: Text('My Account', style: context.text.headlineMedium),
+          title: Text('My Account', style: context.text.headlineSmall),
           centerTitle: true,
           actions: [
             IconButton(

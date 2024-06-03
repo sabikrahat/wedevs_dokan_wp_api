@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../enum/product.dart';
-import '../../../../utils/extensions/extensions.dart';
 
 import '../../../../config/constants.dart';
+import '../../../../utils/extensions/extensions.dart';
 import '../../../../utils/themes/themes.dart';
+import '../../enum/product.dart';
 import '../../provider/product.provider.dart';
 
 Future<void> showFilteringOptions(BuildContext context) async {

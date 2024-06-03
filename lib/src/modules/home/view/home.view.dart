@@ -21,12 +21,15 @@ class HomeView extends ConsumerWidget {
             final notifier = ref.read(homeProvider.notifier);
             return Scaffold(
               body: SafeArea(
-                child: notifier.currentIndex == 0
-                    ? const ProductView()
-                    : notifier.currentIndex == 3
-                        ? const ProfileView()
-                        : const Center(
-                            child: Text('Will be implemented soon.')),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                  child: notifier.currentIndex == 0
+                      ? const ProductView()
+                      : notifier.currentIndex == 3
+                          ? const ProfileView()
+                          : const Center(
+                              child: Text('Will be implemented soon.')),
+                ),
               ),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerDocked,
