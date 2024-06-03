@@ -22,7 +22,7 @@ class AppSettings {
   final int id = 0;
 
   bool firstRun = true;
-  String currency = 'BDT';
+  String currency = 'USD';
   bool performanceOverlayEnable = false;
   String dateFormat = dateFormates.first;
   String timeFormat = timeFormates.first;
