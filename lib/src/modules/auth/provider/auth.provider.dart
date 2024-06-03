@@ -30,10 +30,6 @@ class AuthProvider extends AutoDisposeFamilyNotifier<void, bool> {
       pwdCntrlr.text = '123456';
       pwdConfirmCntrlr.text = '123456';
     }
-    if (isSignup) {
-      pwdCntrlr.text = '123456';
-      pwdConfirmCntrlr.text = '123456';
-    }
   }
 
   void toggleIsSignup() {
