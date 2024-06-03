@@ -1,15 +1,13 @@
-import 'dart:async';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-typedef HomeNotifier = AsyncNotifierProvider<HomeProvider, int>;
+typedef HomeNotifier = NotifierProvider<HomeProvider, int>;
 
 final homeProvider = HomeNotifier(HomeProvider.new);
 
-class HomeProvider extends AsyncNotifier<int> {
+class HomeProvider extends Notifier<int> {
   late int _index;
   @override
-  FutureOr<int> build() async {
+  int build() {
     _index = 0;
     return _index;
   }

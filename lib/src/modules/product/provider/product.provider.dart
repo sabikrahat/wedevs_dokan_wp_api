@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../enum/product.dart';
 
+import '../enum/product.dart';
 import '../model/product.dart';
 
 typedef ProductNotifier = AsyncNotifierProvider<ProductProvider, List<Product>>;

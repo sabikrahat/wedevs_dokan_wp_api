@@ -50,8 +50,8 @@ Future<void> signupApi(BuildContext context, AuthProvider notifier,
     } else {
       log.e('signupApi response: $body');
       if (!context.mounted) return;
-      showAwesomeSnackbar(
-          context, 'Failed!', removeHtmlTags(body['message']), MessageType.failure);
+      showAwesomeSnackbar(context, 'Failed!', removeHtmlTags(body['message']),
+          MessageType.failure);
     }
     //
     EasyLoading.dismiss();
@@ -60,10 +60,16 @@ Future<void> signupApi(BuildContext context, AuthProvider notifier,
     EasyLoading.showError('No Internet Connection. $e');
     return;
   } on ClientException catch (e) {
-    log.e('User Signup: $e');
+    log.e('User signup: $e');
     if (!context.mounted) return;
     showAwesomeSnackbar(
         context, 'Failed!', removeHtmlTags(e.message), MessageType.failure);
+    return;
+  } catch (e) {
+    log.e('User signup: $e');
+    if (!context.mounted) return;
+    showAwesomeSnackbar(
+        context, 'Failed!', removeHtmlTags(e.toString()), MessageType.failure);
     return;
   }
 }
@@ -103,6 +109,12 @@ Future<void> signinApi(BuildContext context, AuthProvider notifier) async {
     if (!context.mounted) return;
     showAwesomeSnackbar(
         context, 'Failed!', removeHtmlTags(e.message), MessageType.failure);
+    return;
+  } catch (e) {
+    log.e('User signin: $e');
+    if (!context.mounted) return;
+    showAwesomeSnackbar(
+        context, 'Failed!', removeHtmlTags(e.toString()), MessageType.failure);
     return;
   }
 }
