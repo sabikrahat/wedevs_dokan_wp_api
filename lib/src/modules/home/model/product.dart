@@ -10,6 +10,8 @@ class Product {
   double? price;
   double? regularPrice;
   String? image;
+  int? ratingCount;
+  DateTime? dateCreated;
 
   Product({
     this.id,
@@ -17,6 +19,8 @@ class Product {
     this.price,
     this.regularPrice,
     this.image,
+    this.ratingCount,
+    this.dateCreated,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -27,13 +31,18 @@ class Product {
       regularPrice: json[_Json.regularPrice]?.toString().toDouble,
       image:
           json[_Json.images] == null ? null : json[_Json.images][0][_Json.src],
+      ratingCount: json[_Json.ratingCount]?.toString().toInt,
+      dateCreated: json[_Json.dateCreated] == null
+          ? null
+          : DateTime.parse(json[_Json.dateCreated] as String).toLocal(),
     );
   }
 
   factory Product.fromRawJson(String str) => Product.fromJson(json.decode(str));
 
   @override
-  String toString() => 'Product(id: $id, name: $name, price: $price, regularPrice: $regularPrice, image: $image)';
+  String toString() =>
+      'Product(id: $id, name: $name, price: $price, regularPrice: $regularPrice, image: $image)';
 
   @override
   bool operator ==(Object other) {
@@ -53,4 +62,7 @@ class _Json {
   static const String regularPrice = 'regular_price';
   static const String images = 'images';
   static const String src = 'src';
+  static const String ratingCount = 'rating_count';
+  static const String dateCreated = 'date_created';
+
 }

@@ -30,6 +30,7 @@ Duration kAnimationDuration([double t = 2.5]) =>
 final roundedButtonStyle = ElevatedButton.styleFrom(
     shape: RoundedRectangleBorder(borderRadius: borderRadius15));
 
+final borderRadius0 = BorderRadius.circular(0);
 final borderRadius3 = BorderRadius.circular(3);
 final borderRadius5 = BorderRadius.circular(5);
 final borderRadius10 = BorderRadius.circular(10);
@@ -41,6 +42,8 @@ final borderRadius45 = BorderRadius.circular(45);
 final borderRadius60 = BorderRadius.circular(60);
 final borderRadius100 = BorderRadius.circular(100);
 
+final roundedRectangleBorder0 =
+    RoundedRectangleBorder(borderRadius: borderRadius0);
 final roundedRectangleBorder3 =
     RoundedRectangleBorder(borderRadius: borderRadius3);
 final roundedRectangleBorder5 =
