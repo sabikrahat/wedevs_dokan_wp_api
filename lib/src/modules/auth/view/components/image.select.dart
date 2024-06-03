@@ -34,17 +34,19 @@ class AuthImageSelect extends StatelessWidget {
                       height: 120,
                       padding: const EdgeInsets.all(3.0),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: context.theme.cardColor,
                         borderRadius: borderRadius100,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.shade400,
+                            color: context.theme.textTheme.bodyMedium!.color!
+                                .withOpacity(0.15),
                             offset: const Offset(4, 4),
                             blurRadius: 15,
                             spreadRadius: 1,
                           ),
                           BoxShadow(
-                            color: Colors.grey.shade100,
+                            color: context.theme.textTheme.bodyMedium!.color!
+                                .withOpacity(0.15),
                             offset: const Offset(-4, -4),
                             blurRadius: 15,
                             spreadRadius: 1,

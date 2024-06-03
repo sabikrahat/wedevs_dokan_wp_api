@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../config/constants.dart';
-import '../provider/profile.dart';
 
+import '../../../config/constants.dart';
 import '../../../config/custom.routes.dart';
 import '../../../utils/extensions/extensions.dart';
 import '../../settings/view/setting.view.dart';
+import '../provider/profile.dart';
 
 class ProfileView extends ConsumerWidget {
   const ProfileView({super.key});
@@ -71,132 +71,136 @@ class ProfileView extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(height: 30.0),
-                Material(
-                  elevation: 5.0,
-                  color: context.theme.cardColor,
-                  shape: roundedRectangleBorder12,
-                  child: Container(
-                    padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      color: context.theme.cardColor,
-                      borderRadius: borderRadius12,
-                    ),
-                    child: Column(
-                      children: [
-                        const InfoSection(),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Divider(
-                            color: context.theme.disabledColor,
-                            thickness: 0.3,
-                          ),
+                Container(
+                  padding: const EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    color: context.theme.cardColor,
+                    borderRadius: borderRadius12,
+                    boxShadow: [
+                      BoxShadow(
+                        color: context.theme.textTheme.bodyMedium!.color!
+                            .withOpacity(0.1),
+                        spreadRadius: 5,
+                        blurRadius: 10,
+                        offset: const Offset(4, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      const InfoSection(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Divider(
+                          color: context.theme.disabledColor,
+                          thickness: 0.3,
                         ),
-                        const SizedBox(height: 6.0),
-                        Theme(
-                          data: context.theme
-                              .copyWith(dividerColor: Colors.transparent),
-                          child: ExpansionTile(
-                            leading: SvgPicture.asset(
-                              'assets/svgs/password.svg',
-                              width: 25.0,
-                              height: 25.0,
-                            ),
-                            title: Text(
-                              'Passwords',
-                              style: context.text.titleLarge!.copyWith(
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              size: 16.0,
-                              color: context.theme.textTheme.bodyMedium!.color,
-                            ),
-                            onExpansionChanged: (v) {
-                              if (!v) return;
-                              EasyLoading.showToast(
-                                'will be implemented soon',
-                                toastPosition: EasyLoadingToastPosition.bottom,
-                              );
-                            },
+                      ),
+                      const SizedBox(height: 6.0),
+                      Theme(
+                        data: context.theme
+                            .copyWith(dividerColor: Colors.transparent),
+                        child: ExpansionTile(
+                          leading: SvgPicture.asset(
+                            'assets/svgs/password.svg',
+                            width: 25.0,
+                            height: 25.0,
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Divider(
-                            color: context.theme.disabledColor,
-                            thickness: 0.3,
+                          title: Text(
+                            'Passwords',
+                            style: context.text.titleLarge!.copyWith(
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 6.0),
-                        Theme(
-                          data: context.theme
-                              .copyWith(dividerColor: Colors.transparent),
-                          child: ExpansionTile(
-                            leading: SvgPicture.asset(
-                              'assets/svgs/notification.svg',
-                              width: 25.0,
-                              height: 25.0,
-                            ),
-                            title: Text(
-                              'Notification',
-                              style: context.text.titleLarge!.copyWith(
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              size: 16.0,
-                              color: context.theme.textTheme.bodyMedium!.color,
-                            ),
-                            onExpansionChanged: (v) {
-                              if (!v) return;
-                              EasyLoading.showToast(
-                                'will be implemented soon',
-                                toastPosition: EasyLoadingToastPosition.bottom,
-                              );
-                            },
+                          trailing: Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            size: 16.0,
+                            color: context.theme.textTheme.bodyMedium!.color,
                           ),
+                          onExpansionChanged: (v) {
+                            if (!v) return;
+                            EasyLoading.showToast(
+                              'will be implemented soon',
+                              toastPosition: EasyLoadingToastPosition.bottom,
+                            );
+                          },
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Divider(
-                            color: context.theme.disabledColor,
-                            thickness: 0.3,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Divider(
+                          color: context.theme.disabledColor,
+                          thickness: 0.3,
+                        ),
+                      ),
+                      const SizedBox(height: 6.0),
+                      Theme(
+                        data: context.theme
+                            .copyWith(dividerColor: Colors.transparent),
+                        child: ExpansionTile(
+                          leading: SvgPicture.asset(
+                            'assets/svgs/notification.svg',
+                            width: 25.0,
+                            height: 25.0,
                           ),
-                        ),
-                        const SizedBox(height: 6.0),
-                        Theme(
-                          data: context.theme
-                              .copyWith(dividerColor: Colors.transparent),
-                          child: ExpansionTile(
-                            leading: SvgPicture.asset(
-                              'assets/svgs/wishlist.svg',
-                              width: 25.0,
-                              height: 25.0,
+                          title: Text(
+                            'Notification',
+                            style: context.text.titleLarge!.copyWith(
+                              fontWeight: FontWeight.normal,
                             ),
-                            title: Text(
-                              'Wishlist (00)',
-                              style: context.text.titleLarge!.copyWith(
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              size: 16.0,
-                              color: context.theme.textTheme.bodyMedium!.color,
-                            ),
-                            onExpansionChanged: (v) {
-                              if (!v) return;
-                              EasyLoading.showToast(
-                                'will be implemented soon',
-                                toastPosition: EasyLoadingToastPosition.bottom,
-                              );
-                            },
                           ),
+                          trailing: Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            size: 16.0,
+                            color: context.theme.textTheme.bodyMedium!.color,
+                          ),
+                          onExpansionChanged: (v) {
+                            if (!v) return;
+                            EasyLoading.showToast(
+                              'will be implemented soon',
+                              toastPosition: EasyLoadingToastPosition.bottom,
+                            );
+                          },
                         ),
-                      ],
-                    ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Divider(
+                          color: context.theme.disabledColor,
+                          thickness: 0.3,
+                        ),
+                      ),
+                      const SizedBox(height: 6.0),
+                      Theme(
+                        data: context.theme
+                            .copyWith(dividerColor: Colors.transparent),
+                        child: ExpansionTile(
+                          leading: SvgPicture.asset(
+                            'assets/svgs/wishlist.svg',
+                            width: 25.0,
+                            height: 25.0,
+                          ),
+                          title: Text(
+                            'Wishlist (00)',
+                            style: context.text.titleLarge!.copyWith(
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          trailing: Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            size: 16.0,
+                            color: context.theme.textTheme.bodyMedium!.color,
+                          ),
+                          onExpansionChanged: (v) {
+                            if (!v) return;
+                            EasyLoading.showToast(
+                              'will be implemented soon',
+                              toastPosition: EasyLoadingToastPosition.bottom,
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 )
               ],

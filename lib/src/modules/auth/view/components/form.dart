@@ -17,7 +17,8 @@ class AuthForm extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
       child: Form(
-        key: notifier.isSignup ? notifier.signupFormKey : notifier.signinFormKey,
+        key:
+            notifier.isSignup ? notifier.signupFormKey : notifier.signinFormKey,
         child: Column(
           children: [
             DownToUpTransition(
@@ -27,7 +28,8 @@ class AuthForm extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 25.0),
                       child: Material(
                         elevation: 5.0,
-                        shadowColor: Colors.white,
+                        shadowColor: context.theme.textTheme.bodyMedium!.color!
+                            .withOpacity(0.35),
                         shape: roundedRectangleBorder12,
                         child: TextFormField(
                           controller: notifier.nameCntrlr,
@@ -61,7 +63,8 @@ class AuthForm extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 25.0),
               child: Material(
                 elevation: 5.0,
-                shadowColor: Colors.white,
+                shadowColor: context.theme.textTheme.bodyMedium!.color!
+                    .withOpacity(0.35),
                 shape: roundedRectangleBorder12,
                 child: TextFormField(
                   controller: notifier.emailCntrlr,
@@ -96,7 +99,8 @@ class AuthForm extends StatelessWidget {
               padding: EdgeInsets.only(bottom: notifier.isSignup ? 25.0 : 15.0),
               child: Material(
                 elevation: 5.0,
-                shadowColor: Colors.white,
+                shadowColor: context.theme.textTheme.bodyMedium!.color!
+                    .withOpacity(0.35),
                 shape: roundedRectangleBorder12,
                 child: TextFormField(
                   controller: notifier.pwdCntrlr,
@@ -144,7 +148,8 @@ class AuthForm extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 10.0),
                       child: Material(
                         elevation: 5.0,
-                        shadowColor: Colors.white,
+                        shadowColor: context.theme.textTheme.bodyMedium!.color!
+                            .withOpacity(0.35),
                         shape: roundedRectangleBorder12,
                         child: TextFormField(
                           controller: notifier.pwdConfirmCntrlr,

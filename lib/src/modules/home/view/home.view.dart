@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../config/constants.dart';
 import '../../../utils/themes/themes.dart';
+
 import '../../product/view/components/search.delegate.dart';
 import '../../product/view/product.dart';
 import '../../profile/view/profile.dart';
@@ -28,11 +27,19 @@ class HomeView extends ConsumerWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        shape: roundedRectangleBorder60,
-        onPressed: () async =>
-            await showSearch(context: context, delegate: SearchProducts()),
-        child: const Icon(Icons.search, color: white, size: 30.0),
+      floatingActionButton: Container(
+        height: 56.0,
+        width: 56.0,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: kGradient,
+        ),
+        child: RawMaterialButton(
+          shape: const CircleBorder(),
+          onPressed: () async =>
+              await showSearch(context: context, delegate: SearchProducts()),
+          child: const Icon(Icons.search, color: Colors.white, size: 30.0),
+        ),
       ),
       bottomNavigationBar: KBottomNavBar(notifier),
     );

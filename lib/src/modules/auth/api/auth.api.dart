@@ -126,6 +126,7 @@ Future<void> signoutApi(BuildContext context) async {
     if (appUser != null) {
       await appUser!.delete().then((value) async {
         EasyLoading.showSuccess('Logout successful');
+        context.pop();
         await context.pushRemoveUntil(const AppRouter());
       });
     } else {

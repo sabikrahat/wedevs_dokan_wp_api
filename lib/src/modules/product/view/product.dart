@@ -47,7 +47,8 @@ class ProductView extends ConsumerWidget {
                   borderRadius: borderRadius12,
                   child: Material(
                     elevation: 5.0,
-                    shadowColor: Colors.white,
+                    shadowColor: context.theme.textTheme.bodyMedium!.color!
+                        .withOpacity(0.35),
                     shape: roundedRectangleBorder12,
                     color: context.theme.cardColor,
                     child: Padding(

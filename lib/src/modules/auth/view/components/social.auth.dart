@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../utils/extensions/extensions.dart';
 
 import '../../../../config/constants.dart';
 import '../../provider/auth.provider.dart';
@@ -21,17 +22,19 @@ class SocialAuth extends StatelessWidget {
             width: 56.0,
             padding: const EdgeInsets.all(15.0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: context.theme.cardColor,
               borderRadius: borderRadius12,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.shade400,
+                  color: context.theme.textTheme.bodyMedium!.color!
+                      .withOpacity(0.15),
                   offset: const Offset(4, 4),
                   blurRadius: 15,
                   spreadRadius: 1,
                 ),
                 BoxShadow(
-                  color: Colors.grey.shade100,
+                  color: context.theme.textTheme.bodyMedium!.color!
+                      .withOpacity(0.15),
                   offset: const Offset(-4, -4),
                   blurRadius: 15,
                   spreadRadius: 1,
@@ -46,17 +49,19 @@ class SocialAuth extends StatelessWidget {
             width: 56.0,
             padding: const EdgeInsets.all(15.0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: context.theme.cardColor,
               borderRadius: borderRadius12,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.shade400,
+                  color: context.theme.textTheme.bodyMedium!.color!
+                      .withOpacity(0.15),
                   offset: const Offset(4, 4),
                   blurRadius: 15,
                   spreadRadius: 1,
                 ),
                 BoxShadow(
-                  color: Colors.grey.shade100,
+                  color: context.theme.textTheme.bodyMedium!.color!
+                      .withOpacity(0.15),
                   offset: const Offset(-4, -4),
                   blurRadius: 15,
                   spreadRadius: 1,
